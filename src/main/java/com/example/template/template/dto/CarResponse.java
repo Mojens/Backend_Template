@@ -14,17 +14,19 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarResponse {
 
-  private int id;
+  private Integer id;
   private String brand;
   private String model;
   private String color;
-  private int kilometers;
+  private Integer kilometers;
 
-  public CarResponse(Car c) {
+  public CarResponse(Car c, boolean allData) {
     this.id = c.getId();
     this.brand = c.getBrand();
     this.model = c.getModel();
     this.color = c.getColor();
-    this.kilometers = c.getKilometers();
+    if (allData) {
+      this.kilometers = c.getKilometers();
+    }
   }
 }

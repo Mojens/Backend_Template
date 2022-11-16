@@ -18,7 +18,7 @@ public class CarService {
 
   public List<CarResponse> getAllCars(){
     List<Car> carList = carRepository.findAll();
-    return carList.stream().map(c -> new CarResponse(c)).toList();
+    return carList.stream().map(c -> new CarResponse(c,true)).toList();
   }
 
 }

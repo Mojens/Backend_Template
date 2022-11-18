@@ -101,7 +101,7 @@ public class SecurityConfig {
         //.antMatchers("/", "/**").permitAll()
 
         .antMatchers(HttpMethod.GET,"/api/cars").hasAnyAuthority("ADMIN","USER")
-        .antMatchers(HttpMethod.GET,"/api/cars/all").hasAnyAuthority("ADMIN")
+        .antMatchers(HttpMethod.GET,"/api/cars/all").hasAnyAuthority("ADMIN","USER")
         .antMatchers(HttpMethod.GET,"/api/cars/filter").hasAnyAuthority("ADMIN","USER")
 
 

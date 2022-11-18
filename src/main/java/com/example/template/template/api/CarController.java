@@ -25,7 +25,7 @@ public class CarController {
     return carService.getAllCars(p);
   }
 
-  @PreAuthorize("hasAuthority('ADMIN')")
+  @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
   @GetMapping("/all")
   List<CarResponse> getAllCars() {
     return carService.getAllCars();

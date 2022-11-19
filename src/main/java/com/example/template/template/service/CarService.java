@@ -1,12 +1,15 @@
 package com.example.template.template.service;
 
+import com.example.template.template.dto.CarRequest;
 import com.example.template.template.dto.CarResponse;
 import com.example.template.template.entity.Car;
 import com.example.template.template.repository.CarRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,6 +45,15 @@ public class CarService {
       default -> null;
     };
 
+  }
+
+  public CarResponse addCar(CarRequest carRequest){
+    if (carRepository.existsById(carRequest.getId())){
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Car with this ID already exist");
+    }
+    Car newCar = CarRequest.getCarEntity(carRequest);
+    newCar = carRepository.save(newCar);
+    return new CarResponse(newCar, true);
   }
 
 

@@ -9,6 +9,9 @@ import javax.persistence.Id;
 @ToString
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Car {
   @Id
